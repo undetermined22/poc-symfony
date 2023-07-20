@@ -13,6 +13,7 @@ services:
       - /var/www/docker
     env_file:
       - .env
+    user: 1000:1000
   sqlserver:
     container_name: "prdg_mssql"
     image: mcr.microsoft.com/mssql/server:2019-latest

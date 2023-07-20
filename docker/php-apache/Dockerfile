@@ -33,4 +33,7 @@ RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
 
 COPY vhost.conf /etc/apache2/sites-available/000-default.conf
 
+RUN groupadd -g 1000 symfony
+RUN useradd -ms /bin/bash symfony -u 1000 -g 1000 -G sudo,root
+
 WORKDIR /var/www
