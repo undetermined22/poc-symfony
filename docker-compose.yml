@@ -3,13 +3,14 @@ version: '3'
 services:
   php:
     container_name: "prdg_php"
-    build: .
+    build: docker/php-apache/
     ports:
       - 80:80
       - 8080:8080
       - 443:443
     volumes:
       - .:/var/www
+      - /var/www/docker
     env_file:
       - .env
   sqlserver:
