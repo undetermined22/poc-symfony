@@ -27,7 +27,7 @@ class ClientController extends AbstractController
         $client = new Client();
         $client->setName($request->request->get('name'));
         $client->setEmail($request->request->get('email'));
-    
+
         $entityManager->persist($client);
         $entityManager->flush();
 
