@@ -44,6 +44,9 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
     install-php-extensions amqp
 
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash \
+    && apt-get install -y nodejs
+
 COPY vhost.conf /etc/apache2/sites-available/000-default.conf
 
 RUN groupadd -g 1000 symfony
