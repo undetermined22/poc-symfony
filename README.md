@@ -38,3 +38,33 @@ Puis créez la base de données avec la commande suivante:
 1> CREATE DATABASE prdg;
 2> GO
 ```
+___
+
+## Migration de la base de donnée
+
+Connectez-vous au conteneur de PHP en utilisant la commande suivante:
+
+```bash
+$ docker exec -it prdg_php bash
+```
+Pour créer migrer les tables tapez la commande suivante:
+
+```bash
+$ symfony console doctrine:migrations:migrate
+```
+___
+
+## Execution des tests unitaires
+
+Avant d'executer les commandes de test preparer l'environnement:
+
+```bash
+$ symfony console doctrine:database:create --env=test
+$ symfony console doctrine:migrations:migrate -n --env=test
+```
+
+Puis la commande suivante:
+
+```bash
+$ symfony console doctrine:migrations:migrate
+```
