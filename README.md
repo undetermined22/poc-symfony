@@ -23,7 +23,7 @@ ___
 Connectez-vous au conteneur de MS SQL Server en utilisant la commande suivante:
 
 ```bash
-$ docker exec -it prdg_mssql bash
+$ docker exec -it poc_symfony_mssql bash
 ```
 Pour créer la base de donnée tapez la commande suivante:
 
@@ -35,7 +35,7 @@ N.B. Vous serez invité à saisir un mot de passe, utilisez le mot de passe que 
 Puis créez la base de données avec la commande suivante:
 
 ```sql
-1> CREATE DATABASE prdg;
+1> CREATE DATABASE poc_symfony;
 2> GO
 ```
 ___
@@ -45,7 +45,7 @@ ___
 Connectez-vous au conteneur de PHP en utilisant la commande suivante:
 
 ```bash
-$ docker exec -it prdg_php bash
+$ docker exec -it poc_symfony_php bash
 ```
 Pour créer migrer les tables tapez la commande suivante:
 
@@ -66,5 +66,23 @@ $ symfony console doctrine:migrations:migrate -n --env=test
 Puis la commande suivante:
 
 ```bash
-$ symfony console doctrine:migrations:migrate
+$ APP_ENV=test ./vendor/bin/phpunit
+```
+___
+
+## Execution des tests de conformité de code
+
+executez la commande suivante:
+
+```bash
+$ ./vendor/bin/phpcs
+```
+___
+
+## Execution d'analyse statique
+
+executez la commande suivante:
+
+```bash
+$ ./vendor/bin/phpstan
 ```

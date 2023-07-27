@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ClientController extends AbstractController
 {
-    #[Route('/', name: 'prdg_clients', methods: ['GET'])]
+    #[Route('/', name: 'clients', methods: ['GET'])]
     public function index(ClientRepository $clients): Response
     {
         $client = new Client();
@@ -21,7 +21,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('/clients', name: 'prdg_client_create', methods: ['POST'])]
+    #[Route('/clients', name: 'client_create', methods: ['POST'])]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
         $client = new Client();
@@ -31,6 +31,6 @@ class ClientController extends AbstractController
         $entityManager->persist($client);
         $entityManager->flush();
 
-        return $this->redirectToRoute('prdg_clients');
+        return $this->redirectToRoute('clients');
     }
 }

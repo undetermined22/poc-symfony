@@ -2,7 +2,7 @@ version: '3'
 
 services:
   php:
-    container_name: "prdg_php"
+    container_name: "poc_symfony_php"
     build: docker/php-apache/
     ports:
       - 80:80
@@ -15,12 +15,12 @@ services:
       - .env
     user: 1000:1000
   sqlserver:
-    container_name: "prdg_mssql"
+    container_name: "poc_symfony_mssql"
     image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
       - 1433:1433
     volumes:
-      - ~/data/prdg/mssql:/var/opt/mssql/data
+      - ~/data/poc_symfony/mssql:/var/opt/mssql/data
     env_file:
       - .env
     environment:
